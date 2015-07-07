@@ -1,0 +1,1 @@
+GwtCytoscapeJS is a GWT wrapper for the [Cytoscape JS](http://js.cytoscape.org/)
