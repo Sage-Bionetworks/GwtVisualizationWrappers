@@ -1,4 +1,4 @@
-package org.gwtvisualizationwrappers.client;
+package org.gwtvisualizationwrappers.client.cytoscape;
 
 /*
  * #%L
@@ -28,11 +28,11 @@ import com.google.gwt.resources.client.TextResource;
 /**
  * @author Jay Hodgson
  */
-public interface GwtVisualizationWrapperClientBundle extends ClientBundle {
+public interface CytoscapeJsClientBundle extends ClientBundle {
 
-    static final GwtVisualizationWrapperClientBundle INSTANCE = GWT.create(GwtVisualizationWrapperClientBundle.class);
+    static final CytoscapeJsClientBundle INSTANCE = GWT.create(CytoscapeJsClientBundle.class);
 
-    @Source("resource/js/cytoscape/cytoscape.min.js")
+    @Source("resource/js/cytoscape.min.js")
     TextResource cytoscape();
 
     @Source("resource/js/jquery-1.11.2.min.cache.js")

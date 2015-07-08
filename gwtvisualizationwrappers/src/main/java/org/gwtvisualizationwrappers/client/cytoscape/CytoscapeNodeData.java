@@ -1,10 +1,10 @@
-package org.gwtvisualizationwrappers.client;
+package org.gwtvisualizationwrappers.client.cytoscape;
 
 /*
  * #%L
- * Gwt Visualization Wrappers
+ * GwtCytoscapeJs
  * %%
- * Copyright (C) 2015 - 2016 GwtVisualizationWrapper
+ * Copyright (C) 2015 GwtCytoscapeJs
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,3 +19,14 @@ package org.gwtvisualizationwrappers.client;
  * limitations under the License.
  * #L%
  */
+
+import com.google.gwt.core.client.js.JsType;
+
+@JsType
+public class CytoscapeNodeData {
+  // element data
+  //mandatory for each element, assigned automatically on undefined
+  public String id;
+  //indicates the compound node parent id; not defined => no parent
+  public String parent;
+}

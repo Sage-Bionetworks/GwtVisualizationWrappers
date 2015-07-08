@@ -1,10 +1,10 @@
-package org.gwtvisualizationwrappers.client;
+package org.gwtvisualizationwrappers.client.cytoscape;
 
 /*
  * #%L
- * Gwt Visualization Wrappers
+ * GwtCytoscapeJs
  * %%
- * Copyright (C) 2015 - 2016 GwtVisualizationWrapper
+ * Copyright (C) 2015 GwtCytoscapeJs
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,3 +19,13 @@ package org.gwtvisualizationwrappers.client;
  * limitations under the License.
  * #L%
  */
+
+import com.google.gwt.core.client.js.JsType;
+
+@JsType
+public class CytoscapeNodeXY {
+	// the model position of the node (optional on init, mandatory after)
+	/** Automatically treated as @JsProperty **/
+	public int x;
+	public int y;
+}

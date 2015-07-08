@@ -1,8 +1,8 @@
-package org.gwtvisualizationwrappers.client;
+package org.gwtvisualizationwrappers.client.cytoscape;
 
 /*
  * #%L
- * GwtVisualizationWrapper
+ * Gwt Visualization Wrappers
  * %%
  * Copyright (C) 2015 - 2016 GwtVisualizationWrapper
  * %%
@@ -19,22 +19,3 @@ package org.gwtvisualizationwrappers.client;
  * limitations under the License.
  * #L%
  */
-
-
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.TextResource;
-
-/**
- * @author Jay Hodgson
- */
-public interface GwtVisualizationWrapperClientBundle extends ClientBundle {
-
-    static final GwtVisualizationWrapperClientBundle INSTANCE = GWT.create(GwtVisualizationWrapperClientBundle.class);
-
-    @Source("resource/js/cytoscape/cytoscape.min.js")
-    TextResource cytoscape();
-
-    @Source("resource/js/jquery-1.11.2.min.cache.js")
-    TextResource jQuery();
-}

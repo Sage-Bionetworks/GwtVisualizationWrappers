@@ -19,18 +19,19 @@
   limitations under the License.
   #L%
   -->
-<module>
-    <public path="client/resource">
+<module rename-to="CytoscapeJs">
+    <public path="client/cytoscape/resource">
         <include name="css/*.css"/>
         <include name="js/*.js"/>
-        <include name="js/cytoscape/*.js"/>
         <include name="fonts/*"/>
     </public>
     
     <inherits name="com.google.gwt.user.User"/>
     <inherits name="com.google.gwt.user.UserAgent"/>
     <inherits name="com.google.gwt.i18n.I18N"/>
-
-    <source path="client" />
+	
+	<entry-point class="org.gwtvisualizationwrappers.client.cytoscape.CytoscapeJsEntryPoint" />
+	
+    <source path="client/cytoscape" />
     <source path="shared" />
 </module>

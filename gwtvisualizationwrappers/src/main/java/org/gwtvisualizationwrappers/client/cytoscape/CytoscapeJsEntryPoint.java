@@ -1,4 +1,4 @@
-package org.gwtvisualizationwrappers.client;
+package org.gwtvisualizationwrappers.client.cytoscape;
 
 /*
  * #%L
@@ -27,7 +27,7 @@ import com.google.gwt.core.client.ScriptInjector;
  * Provides script injection for cytoscape
  * 
  */
-public class GwtVisualizationWrapperEntryPoint implements EntryPoint {
+public class CytoscapeJsEntryPoint implements EntryPoint {
 
     /**
      * Check to see if Cytoscape JS is loaded already.
@@ -51,13 +51,13 @@ public class GwtVisualizationWrapperEntryPoint implements EntryPoint {
     @Override
     public void onModuleLoad() {
         if (!isjQueryLoaded()) {
-            ScriptInjector.fromString(GwtVisualizationWrapperClientBundle.INSTANCE.jQuery().getText())
+            ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.jQuery().getText())
                     .setWindow(ScriptInjector.TOP_WINDOW)
                     .inject();
         }
 
         if (!isCytoscapeLoaded()) {
-            ScriptInjector.fromString(GwtVisualizationWrapperClientBundle.INSTANCE.cytoscape().getText())
+            ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.cytoscape().getText())
                 .setWindow(ScriptInjector.TOP_WINDOW)
                 .inject();
         }
