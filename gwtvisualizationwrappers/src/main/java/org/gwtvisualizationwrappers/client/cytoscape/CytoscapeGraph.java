@@ -1,5 +1,5 @@
 package org.gwtvisualizationwrappers.client.cytoscape;
-
+import com.google.gwt.dom.client.Element;
 /*
  * #%L
  * GwtCytoscapeJs
@@ -20,19 +20,17 @@ package org.gwtvisualizationwrappers.client.cytoscape;
  * #L%
  */
 
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.ui.Widget;
 
 public class CytoscapeGraph {
 	/**
-	 * Construct and show a cytoscape graph in the given container
-	 * @param container
+	 * Construct and show a cytoscape graph
 	 * @param params
 	 */
-	public CytoscapeGraph(Widget container, CytoscapeInitParams params) {
-		show(container.getElement(), params);
+	public CytoscapeGraph(CytoscapeInitParams params) {
+		show(params.container, params);
 	}
 	private native void show(Element e, CytoscapeInitParams params) /*-{
+		//TODO: cytoscape(params) currently returns 'undefined' instead of the element.
 		$wnd.jQuery(e).cytoscape(params);
 	}-*/;
 }

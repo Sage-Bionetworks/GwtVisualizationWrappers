@@ -20,8 +20,6 @@ package org.gwtvisualizationwrappers.client.cytoscape;
  * #L%
  */
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.js.JsType;
 import com.google.gwt.dom.client.Element;
 
@@ -30,8 +28,9 @@ public class CytoscapeInitParams {
 	public Element container;
 	public CytoscapeElements elements;
 	
+	public CytoscapeName layout;
+	
 //	style: [ /* ... */ ],
-//	layout: { name: 'grid' /* , ... */ },
 //	ready: function(evt){ /* ... */ },
 	
 	//initial viewport

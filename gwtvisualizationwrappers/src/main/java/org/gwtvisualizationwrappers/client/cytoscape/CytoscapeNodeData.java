@@ -29,4 +29,6 @@ public class CytoscapeNodeData {
   public String id;
   //indicates the compound node parent id; not defined => no parent
   public String parent;
+  public String source;
+  public String target;
 }

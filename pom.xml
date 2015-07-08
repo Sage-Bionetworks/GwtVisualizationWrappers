@@ -30,7 +30,6 @@
                 <role>architect</role>
                 <role>developer</role>
             </roles>
-            <timezone>UTC+1</timezone>
         </developer>
     </developers>
 
@@ -111,6 +110,7 @@
                                 <mode>htmlunit</mode>
                                 <testTimeOut>240</testTimeOut>
                                 <failOnError>true</failOnError>
+                                <jsInteropMode>JS</jsInteropMode>
                             </configuration>
                         </execution>
                     </executions>
@@ -186,7 +186,6 @@
             </url>
             <uniqueVersion>false</uniqueVersion>
         </snapshotRepository>
-
     </distributionManagement>
 
 </project>
