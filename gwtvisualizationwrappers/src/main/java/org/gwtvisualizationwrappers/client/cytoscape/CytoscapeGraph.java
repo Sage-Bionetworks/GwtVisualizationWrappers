@@ -1,8 +1,10 @@
 package org.gwtvisualizationwrappers.client.cytoscape;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.dom.client.Element;
 
 /*
@@ -26,6 +28,17 @@ import com.google.gwt.dom.client.Element;
  */
 
 public class CytoscapeGraph {
+    
+	/**
+     * Check to see if Cytoscape JS is loaded already.
+     * 
+     * @return true if Cytoscape is loaded, false otherwise.
+     */
+    private native boolean isCytoscapeLoaded() /*-{
+        return typeof $wnd['jQuery'].fn.cytoscape !== 'undefined'
+    }-*/;
+
+    
 	/**
 	 * Construct and show a cytoscape graph.
 	 * 
@@ -44,9 +57,18 @@ public class CytoscapeGraph {
 			}
 	}]
 }
-
 	 */
 	public void show(String containerId, String cytoscapeGraphJson) {
+		//lazy load the cytoscape.js source
+		if (!isCytoscapeLoaded()) {
+		    ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.cytoscape().getText())
+		        .setWindow(ScriptInjector.TOP_WINDOW)
+		        .inject();
+		    ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.sageCytoscapeUtils().getText())
+		        .setWindow(ScriptInjector.TOP_WINDOW)
+		        .inject();
+		}
+
 		_initGraph(containerId, cytoscapeGraphJson);
 	}
 
