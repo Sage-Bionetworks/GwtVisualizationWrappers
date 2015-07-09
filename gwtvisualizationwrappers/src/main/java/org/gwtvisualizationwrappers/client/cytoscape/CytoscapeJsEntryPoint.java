@@ -60,6 +60,9 @@ public class CytoscapeJsEntryPoint implements EntryPoint {
             ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.cytoscape().getText())
                 .setWindow(ScriptInjector.TOP_WINDOW)
                 .inject();
+            ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.sageCytoscapeUtils().getText())
+	            .setWindow(ScriptInjector.TOP_WINDOW)
+	            .inject();
         }
     }
     

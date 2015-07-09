@@ -1,4 +1,4 @@
-package org.gwtvisualizationwrappers.client.cytoscape;
+package org.gwtvisualizationwrappers.client.cytoscape.jsinterop;
 
 /*
  * #%L
@@ -23,9 +23,7 @@ package org.gwtvisualizationwrappers.client.cytoscape;
 import com.google.gwt.core.client.js.JsType;
 
 @JsType
-public class CytoscapeNodeXY {
-	// the model position of the node (optional on init, mandatory after)
-	/** Automatically treated as @JsProperty **/
-	public int x;
-	public int y;
+public class CytoscapeElements {
+	public CytoscapeNode[] nodes;
+	public CytoscapeNode[] edges;
 }

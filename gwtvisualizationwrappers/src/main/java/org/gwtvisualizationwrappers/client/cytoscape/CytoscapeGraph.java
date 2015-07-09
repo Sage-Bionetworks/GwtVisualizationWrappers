@@ -1,5 +1,10 @@
 package org.gwtvisualizationwrappers.client.cytoscape;
+
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsonUtils;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
+
 /*
  * #%L
  * GwtCytoscapeJs
@@ -20,17 +25,45 @@ import com.google.gwt.dom.client.Element;
  * #L%
  */
 
-
 public class CytoscapeGraph {
 	/**
-	 * Construct and show a cytoscape graph
-	 * @param params
-	 */
-	public CytoscapeGraph(CytoscapeInitParams params) {
-		show(params.container, params);
+	 * Construct and show a cytoscape graph.
+	 * 
+	 * @param containerId Element ID to put the graph into.
+	 * @param cytoscapeGraphJson Exported JSON from Cytoscape.
+	 * http://wiki.cytoscape.org/Cytoscape_3/UserManual#Cytoscape_3.2BAC8-UserManual.2BAC8-CytoscapeJs.Data_Exchange_between_Cytoscape_and_Cytoscape.js
+
+{
+	elements:{
+		nodes:[],
+		edges:[]
 	}
-	private native void show(Element e, CytoscapeInitParams params) /*-{
-		//TODO: cytoscape(params) currently returns 'undefined' instead of the element.
-		$wnd.jQuery(e).cytoscape(params);
+	style:[{
+			selector: 'node',
+			style: {
+			}
+	}]
+}
+
+	 */
+	public CytoscapeGraph(String containerId, String cytoscapeGraphJson) {
+		_initGraph(containerId, cytoscapeGraphJson);
+	}
+
+	/**
+	 * Initialization of cytoscape via jquery (given the element, so container
+	 * is not necessary).
+	 * 
+	 * @param containerId
+	 */
+	private static native void _initGraph(String containerId, String cytoscapeGraphJson) /*-{
+		var containerElement = $doc.getElementById(containerId);
+		function readyFunction() {
+			console.log('Cytoscape graph ready');
+		}
+
+		var options = $wnd.createPlainObject(cytoscapeGraphJson, containerElement, readyFunction);
+		$wnd.cytoscape(options);
 	}-*/;
+
 }

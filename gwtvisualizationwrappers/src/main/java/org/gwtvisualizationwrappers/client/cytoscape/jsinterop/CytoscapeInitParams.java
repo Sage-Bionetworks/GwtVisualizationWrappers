@@ -1,4 +1,4 @@
-package org.gwtvisualizationwrappers.client.cytoscape;
+package org.gwtvisualizationwrappers.client.cytoscape.jsinterop;
 
 /*
  * #%L

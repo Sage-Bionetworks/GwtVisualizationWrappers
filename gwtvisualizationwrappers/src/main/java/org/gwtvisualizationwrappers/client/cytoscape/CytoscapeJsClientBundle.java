@@ -32,9 +32,12 @@ public interface CytoscapeJsClientBundle extends ClientBundle {
 
     static final CytoscapeJsClientBundle INSTANCE = GWT.create(CytoscapeJsClientBundle.class);
 
-    @Source("resource/js/cytoscape.min.js")
+    @Source("resource/js/2.4.2-cytoscape.min.js")
     TextResource cytoscape();
 
     @Source("resource/js/jquery-1.11.2.min.cache.js")
     TextResource jQuery();
+    
+    @Source("resource/js/sage-cytoscape-utils.js")
+    TextResource sageCytoscapeUtils();
 }
