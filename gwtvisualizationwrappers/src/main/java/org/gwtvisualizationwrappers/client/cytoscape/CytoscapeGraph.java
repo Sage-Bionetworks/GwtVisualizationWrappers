@@ -46,7 +46,7 @@ public class CytoscapeGraph {
 }
 
 	 */
-	public CytoscapeGraph(String containerId, String cytoscapeGraphJson) {
+	public void show(String containerId, String cytoscapeGraphJson) {
 		_initGraph(containerId, cytoscapeGraphJson);
 	}
 
