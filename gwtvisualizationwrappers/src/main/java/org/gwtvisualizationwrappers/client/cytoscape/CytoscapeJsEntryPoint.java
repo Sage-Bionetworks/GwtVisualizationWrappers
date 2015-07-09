@@ -29,14 +29,6 @@ import com.google.gwt.core.client.ScriptInjector;
  */
 public class CytoscapeJsEntryPoint implements EntryPoint {
 
-    /**
-     * Check to see if Cytoscape JS is loaded already.
-     * 
-     * @return true if Cytoscape is loaded, false otherwise.
-     */
-    private native boolean isCytoscapeLoaded() /*-{
-        return typeof $wnd['jQuery'].fn.cytoscape !== 'undefined'
-    }-*/;
 
     /**
      * Check to see if jQuery is loaded already
@@ -54,15 +46,6 @@ public class CytoscapeJsEntryPoint implements EntryPoint {
             ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.jQuery().getText())
                     .setWindow(ScriptInjector.TOP_WINDOW)
                     .inject();
-        }
-
-        if (!isCytoscapeLoaded()) {
-            ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.cytoscape().getText())
-                .setWindow(ScriptInjector.TOP_WINDOW)
-                .inject();
-            ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.sageCytoscapeUtils().getText())
-	            .setWindow(ScriptInjector.TOP_WINDOW)
-	            .inject();
         }
     }
     
