@@ -33,4 +33,4 @@ https://developers.google.com/closure/compiler/docs/gettingstarted_app
 java -jar compiler.jar --language_in ECMASCRIPT5_STRICT cytoscape.js --js_output_file 2.4.2-cytoscape.closurecompiled.js
 4.  Add js as a TextResource (see CytoscapeJsClientBundle)
 5.  Create the EntryPoint to the module (that loads any small shared resources up front).
-6.  Create versioned visualization java object, that lazily loads the correct js resource and deals with exported variables.  See CytoscapeGraph242. 
+6.  Create versioned visualization java object, that lazily loads the correct js resource and deals with version collisions.  See CytoscapeGraph242. 
