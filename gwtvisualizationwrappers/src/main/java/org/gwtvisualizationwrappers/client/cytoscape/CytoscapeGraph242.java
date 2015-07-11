@@ -27,18 +27,35 @@ import com.google.gwt.dom.client.Element;
  * #L%
  */
 
-public class CytoscapeGraph {
+public class CytoscapeGraph242 {
     
 	/**
-     * Check to see if Cytoscape JS is loaded already.
+     * Check to see if Cytoscape JS version has been loaded already.
      * 
      * @return true if Cytoscape is loaded, false otherwise.
      */
-    private native boolean isCytoscapeLoaded() /*-{
-        return typeof $wnd['jQuery'].fn.cytoscape !== 'undefined'
+    private native boolean isCytoscape242Loaded() /*-{
+        return typeof $wnd['jQuery'].fn.cytoscape242 !== 'undefined'
     }-*/;
-
     
+	private static native void _init242() /*-{
+		$wnd.cytoscape242 = $wnd.cytoscape;
+		$wnd.cytoscape = undefined;
+	}-*/;
+	
+	private static native void _initGraph(String containerId, String cytoscapeGraphJson) /*-{
+		var containerElement = $doc.getElementById(containerId);
+		function readyFunction() {
+			console.log('Cytoscape graph ready');
+		}
+	
+		var options = $wnd.createPlainObject(cytoscapeGraphJson, containerElement, readyFunction);
+		
+		$wnd.cytoscape = $wnd.cytoscape242;
+		$wnd.cytoscape(options); 
+		$wnd.cytoscape = undefined;
+	}-*/;
+	
 	/**
 	 * Construct and show a cytoscape graph.
 	 * 
@@ -60,32 +77,16 @@ public class CytoscapeGraph {
 	 */
 	public void show(String containerId, String cytoscapeGraphJson) {
 		//lazy load the cytoscape.js source
-		if (!isCytoscapeLoaded()) {
-		    ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.cytoscape().getText())
+		if (!isCytoscape242Loaded()) {
+		    ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.cytoscape2_4_2().getText())
 		        .setWindow(ScriptInjector.TOP_WINDOW)
 		        .inject();
-		    ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.sageCytoscapeUtils().getText())
-		        .setWindow(ScriptInjector.TOP_WINDOW)
-		        .inject();
+		    _init242();
 		}
 
 		_initGraph(containerId, cytoscapeGraphJson);
 	}
 
-	/**
-	 * Initialization of cytoscape via jquery (given the element, so container
-	 * is not necessary).
-	 * 
-	 * @param containerId
-	 */
-	private static native void _initGraph(String containerId, String cytoscapeGraphJson) /*-{
-		var containerElement = $doc.getElementById(containerId);
-		function readyFunction() {
-			console.log('Cytoscape graph ready');
-		}
 
-		var options = $wnd.createPlainObject(cytoscapeGraphJson, containerElement, readyFunction);
-		$wnd.cytoscape(options);
-	}-*/;
 
 }
