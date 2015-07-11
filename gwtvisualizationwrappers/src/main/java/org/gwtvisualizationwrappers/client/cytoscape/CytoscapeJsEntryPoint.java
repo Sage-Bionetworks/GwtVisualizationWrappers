@@ -38,6 +38,14 @@ public class CytoscapeJsEntryPoint implements EntryPoint {
     private native boolean isjQueryLoaded() /*-{
         return (typeof $wnd['jQuery'] !== 'undefined');
     }-*/;
+    
+    /**
+     * Check to see if Utility JS function is loaded already.
+     * 
+     */
+    private native boolean isCytoscapeUtilsLoaded() /*-{
+        return typeof $wnd['jQuery'].fn.createPlainObject !== 'undefined'
+    }-*/;
 
     /** {@inheritDoc} */
     @Override
@@ -47,6 +55,14 @@ public class CytoscapeJsEntryPoint implements EntryPoint {
                     .setWindow(ScriptInjector.TOP_WINDOW)
                     .inject();
         }
+        if (!isCytoscapeUtilsLoaded()) {
+        	ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.sageCytoscapeUtils().getText())
+	            .setWindow(ScriptInjector.TOP_WINDOW)
+	            .inject();
+        }
+
+	    
+
     }
     
 }
