@@ -43,13 +43,13 @@ public class CytoscapeGraph242 {
 		$wnd.cytoscape = undefined;
 	}-*/;
 	
-	private static native void _initGraph(String containerId, String cytoscapeGraphJson) /*-{
+	private static native void _initGraph(String containerId, String cyjs, String styleJson) /*-{
 		var containerElement = $doc.getElementById(containerId);
 		function readyFunction() {
 			console.log('Cytoscape graph ready');
 		}
 	
-		var options = $wnd.createPlainObject(cytoscapeGraphJson, containerElement, readyFunction);
+		var options = $wnd.createPlainObject(cyjs, styleJson, containerElement, readyFunction);
 		
 		$wnd.cytoscape = $wnd.cytoscape242;
 		$wnd.cytoscape(options); 
@@ -75,7 +75,7 @@ public class CytoscapeGraph242 {
 	}]
 }
 	 */
-	public void show(String containerId, String cytoscapeGraphJson) {
+	public void show(String containerId, String cyjs, String styleJson) {
 		//lazy load the cytoscape.js source
 		if (!isCytoscape242Loaded()) {
 		    ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.cytoscape2_4_2().getText())
@@ -84,7 +84,7 @@ public class CytoscapeGraph242 {
 		    _init242();
 		}
 
-		_initGraph(containerId, cytoscapeGraphJson);
+		_initGraph(containerId, cyjs, styleJson);
 	}
 
 

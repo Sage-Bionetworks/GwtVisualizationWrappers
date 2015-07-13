@@ -8,11 +8,19 @@
  * @param readyFunction
  * @returns Object
  */
-function createPlainObject(cytoscapeGraphJson, containerElement, readyFunction){
-	var obj = JSON.parse(cytoscapeGraphJson);
+function createPlainObject(cyjs, styleJson, containerElement, readyFunction){
+	var obj = JSON.parse(cyjs);
 	obj.container=containerElement;
 	obj.ready=readyFunction;
 	
+	try {
+		var styles = JSON.parse(styleJson);
+		//try to use the last style defined
+		obj.style=styles[styles.length - 1].style;
+	}
+	catch(err) {
+		console.log('error loading Cytoscape style property.', err);
+	}
 	return obj;
 };
 
