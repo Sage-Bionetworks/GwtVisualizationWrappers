@@ -87,7 +87,7 @@ public class Biodalliance013 {
 									HEIGHT:30}}]
 				}]
 			};
-		
+		$wnd.Browser = $wnd.Browser013;
 		var newBrowser = new $wnd.Browser(biodallianceBrowserConfig);
 	}-*/;
 	
@@ -124,7 +124,6 @@ public class Biodalliance013 {
 
 	private static native void _init013() /*-{
 		$wnd.Browser013 = $wnd.Browser;
-		$wnd.Browser = undefined;
 	}-*/;
 
 
