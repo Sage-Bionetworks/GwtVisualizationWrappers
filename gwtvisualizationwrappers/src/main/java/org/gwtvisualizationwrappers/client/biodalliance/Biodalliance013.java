@@ -84,8 +84,9 @@ public class Biodalliance013 {
 									COLOR1:'red',
 									COLOR2:'red',
 									COLOR3:'red',
-									HEIGHT:30}}]}
-				};
+									HEIGHT:30}}]
+				}]
+			};
 		
 		var newBrowser = new $wnd.Browser(biodallianceBrowserConfig);
 	}-*/;
@@ -109,7 +110,7 @@ public class Biodalliance013 {
 	}]
 }
 	 */
-	public void show(String containerId, String cyjs, String styleJson) {
+	public void show(String containerId) {
 		//lazy load the cytoscape.js source
 		if (!isBiodalliance013Loaded()) {
 		    ScriptInjector.fromString(BiodallianceClientBundle.INSTANCE.biodalliance0_13().getText())
