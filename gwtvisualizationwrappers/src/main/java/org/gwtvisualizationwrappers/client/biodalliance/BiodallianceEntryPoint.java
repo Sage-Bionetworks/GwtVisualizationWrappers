@@ -1,8 +1,8 @@
-package org.gwtvisualizationwrappers.client.cytoscape;
+package org.gwtvisualizationwrappers.client.biodalliance;
 
 /*
  * #%L
- * Gwt Visualization Wrappers
+ * GwtVisualizationWrapper
  * %%
  * Copyright (C) 2015 - 2016 GwtVisualizationWrapper
  * %%
@@ -19,3 +19,19 @@ package org.gwtvisualizationwrappers.client.cytoscape;
  * limitations under the License.
  * #L%
  */
+
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.ScriptInjector;
+
+/**
+ * Provides script injection for biodalliance
+ * 
+ */
+public class BiodallianceEntryPoint implements EntryPoint {
+
+
+    /** {@inheritDoc} */
+    @Override
+    public void onModuleLoad() {
+    }
+}

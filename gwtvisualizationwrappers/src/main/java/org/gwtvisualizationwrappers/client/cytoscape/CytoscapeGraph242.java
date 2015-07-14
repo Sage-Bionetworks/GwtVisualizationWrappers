@@ -9,9 +9,9 @@ import com.google.gwt.dom.client.Element;
 
 /*
  * #%L
- * GwtCytoscapeJs
+ * GwtVisualizationWrapper
  * %%
- * Copyright (C) 2015 GwtCytoscapeJs
+ * Copyright (C) 2015 GwtVisualizationWrapper
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
