@@ -39,7 +39,7 @@ public class Biodalliance013dev {
     }-*/;
     
     
-	private static native void _initBrowser(String containerId, JavaScriptObject biodallianceBrowserConfig) /*-{
+	private static native void _initBrowser(JavaScriptObject biodallianceBrowserConfig) /*-{
 		$wnd.Browser = $wnd.Browser013Dev;
 		var newBrowser = new $wnd.Browser(biodallianceBrowserConfig);
 	}-*/;
@@ -63,7 +63,7 @@ public class Biodalliance013dev {
 	}]
 }
 	 */
-	public void show(String containerId, JavaScriptObject biodallianceBrowserConfig) {
+	public void show(JavaScriptObject biodallianceBrowserConfig) {
 		//lazy load the cytoscape.js source
 		if (!isBiodalliance013DevLoaded()) {
 		    ScriptInjector.fromString(BiodallianceClientBundle.INSTANCE.biodalliance0_13dev().getText())
@@ -72,7 +72,7 @@ public class Biodalliance013dev {
 		    _init013Dev();
 		}
 
-		_initBrowser(containerId, biodallianceBrowserConfig);
+		_initBrowser(biodallianceBrowserConfig);
 	}
 
 	private static native void _init013Dev() /*-{
