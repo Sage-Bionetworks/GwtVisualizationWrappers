@@ -32,6 +32,6 @@ public interface BiodallianceClientBundle extends ClientBundle {
 
     static final BiodallianceClientBundle INSTANCE = GWT.create(BiodallianceClientBundle.class);
     
-    @Source("resource/js/0.13-dalliance-compiled.js")
-    TextResource biodalliance0_13();
+    @Source("resource/js/0.13.dev-dalliance-compiled.js")
+    TextResource biodalliance0_13dev();
 }
