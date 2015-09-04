@@ -1,14 +1,9 @@
 package org.gwtvisualizationwrappers.client.biodalliance;
 
-import java.util.Date;
 import java.util.List;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsonUtils;
-import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.ScriptInjector;
-import com.google.gwt.dom.client.Element;
 
 /*
  * #%L
@@ -67,7 +62,7 @@ public class Biodalliance013dev {
 }
 	 */
 	/**
-	 * 
+	 * @param urlPrefix url prefix, where to find Biodalliance resources (ie //www.biodalliance.org/release-0.14/)
 	 * @param containerId div element id to inject Biodalliance visualization
 	 * @param initChr init chr
 	 * @param initViewStart init view start
@@ -75,7 +70,9 @@ public class Biodalliance013dev {
 	 * @param currentConfig genome browser configuration
 	 * @param sources source tracks
 	 */
-	public void show(String containerId, 
+	public void show(
+			String urlPrefix,
+			String containerId, 
 			String initChr,
 			int initViewStart,
 			int initViewEnd,
@@ -89,14 +86,14 @@ public class Biodalliance013dev {
 		    _init013Dev();
 		}
 
-		JavaScriptObject config = createNewBiodallianceBrowserConfig(containerId, initChr, initViewStart, initViewEnd, currentConfig);
+		JavaScriptObject config = createNewBiodallianceBrowserConfig(urlPrefix, containerId, initChr, initViewStart, initViewEnd, currentConfig);
 		
 		//add a source(s)
 		for (BiodallianceSource source : sources) {
 			if (BiodallianceSource.SourceType.BIGWIG.equals(source.getSourceType())) {
 				addBigwigSource(config, source);	
-			} else if (BiodallianceSource.SourceType.VCF.equals(source.getSourceType())) {
-				addVCFSource(config, source);
+			} else if (BiodallianceSource.SourceType.VCF.equals(source.getSourceType()) || BiodallianceSource.SourceType.BED.equals(source.getSourceType())) {
+				addTabixSource(config, source);
 			}
 		}
 		
@@ -111,6 +108,7 @@ public class Biodalliance013dev {
 	
 
 	private JavaScriptObject createNewBiodallianceBrowserConfig(
+			String prefix,
 			String containerId,
 			String initChr,
 			int initViewStart,
@@ -118,12 +116,13 @@ public class Biodalliance013dev {
 			BiodallianceConfigInterface config
 			) {
 		
-		return createNewBiodallianceBrowserConfig(containerId, initChr, initViewStart, initViewEnd, config.getTwoBitURI(),
+		return createNewBiodallianceBrowserConfig(prefix, containerId, initChr, initViewStart, initViewEnd, config.getTwoBitURI(),
 				config.getBwgURI(), config.getStylesheetURI(), config.getTrixURI(), config.getSpeciesName(), config.getTaxon(), config.getAuthName(),
 				config.getVersion(), config.getUscsName());
 	}
 	
 	private native JavaScriptObject createNewBiodallianceBrowserConfig(
+			String urlPrefix,
 			String containerId,
 			String initChr,
 			int initViewStart,
@@ -149,6 +148,7 @@ public class Biodalliance013dev {
 		}
 				
 		var biodallianceBrowserConfig = {
+				uiPrefix: urlPrefix,
 				pageName: containerId,
 				noPersist: true,
 				chr: initChr, 
@@ -229,13 +229,13 @@ public class Biodalliance013dev {
 	    biodallianceBrowserConfig.sources.push(newSource);
 	}-*/;
 	
-	private void addVCFSource(
+	private void addTabixSource(
 			JavaScriptObject biodallianceBrowserConfig,
 			BiodallianceSource source) {
-		addVCFSource(biodallianceBrowserConfig, source.getSourceName(), source.getSourceURI(), source.getSourceIndexURI(), source.getStyleType(), source.getStyleGlyphType(), source.getStyleColor(), source.getTrackHeightPx());
+		addTabixSource(biodallianceBrowserConfig, source.getSourceName(), source.getSourceURI(), source.getSourceIndexURI(), source.getStyleType(), source.getStyleGlyphType(), source.getStyleColor(), source.getTrackHeightPx(), source.getSourceType().name().toLowerCase());
 	}
 	
-	private native void addVCFSource(
+	private native void addTabixSource(
 			JavaScriptObject biodallianceBrowserConfig,
 			String sourceName,
 			String sourceURI,
@@ -243,7 +243,8 @@ public class Biodalliance013dev {
 			String styleType, 
 			String styleGlyphType,
 			String styleColor,
-			int trackHeightPx
+			int trackHeightPx,
+			String sourcePayload
 			) /*-{
 		var resolverFunction = function(url) {
 		   return fetch(url, {  
@@ -259,7 +260,7 @@ public class Biodalliance013dev {
 			collapseSuperGroups:true,
 			uri: sourceURI,
 			indexURI: sourceIndexURI,
-			payload: 'vcf',
+			payload: sourcePayload,
 			tier_type: 'tabix',
 			style: [{type : styleType,
 					style: {glyph: styleGlyphType,

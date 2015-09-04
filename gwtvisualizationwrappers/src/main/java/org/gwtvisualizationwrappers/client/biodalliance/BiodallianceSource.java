@@ -38,7 +38,7 @@ public class BiodallianceSource {
 	int trackHeightPx;
 
 	public enum SourceType {
-		BIGWIG, VCF
+		BIGWIG, VCF, BED
 	}
 	SourceType sourceType;
 	

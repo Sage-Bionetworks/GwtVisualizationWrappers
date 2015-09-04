@@ -7,3 +7,30 @@ target
 gwt-unitCache/
 war/
 .DS_Store
+
+
+<plugin>
+	<groupId>org.codehaus.mojo</groupId> 
+	<artifactId>gwt-maven-plugin</artifactId>
+	<executions>
+	<execution>
+	<id>gwt</id>
+	<goals>
+	<goal>compile</goal>
+	<goal>i18n</goal>
+	<goal>test</goal>
+	</goals>
+	</execution>
+	<execution>
+	<id>css-generation</id>
+	<phase>generate-sources</phase>
+	<goals>
+	<goal>css</goal>
+	</goals>
+	</execution>
+	</executions>
+	<configuration>
+	<i18nMessagesBundle>com.mycompany.client.view.resources.AppMessages</i18nMessagesBundle> 
+	<cssFile>org/sagebionetworks/client/view/resources/Portal.css</cssFile>
+	</configuration>
+</plugin>

@@ -23,7 +23,9 @@
     <public path="client/biodalliance/resource">
         <include name="css/*.css"/>
         <include name="js/*.js"/>
+        <include name="*.js"/>
         <include name="fonts/*"/>
+        <include name="img/*"/>
     </public>
     
     <inherits name="com.google.gwt.user.User"/>
