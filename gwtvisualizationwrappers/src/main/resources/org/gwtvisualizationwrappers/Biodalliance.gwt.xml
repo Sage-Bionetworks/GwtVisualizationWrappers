@@ -23,6 +23,7 @@
     <public path="client/biodalliance/resource">
         <include name="css/*.css"/>
         <include name="js/*.js"/>
+        <include name="help/*"/>
         <include name="*.js"/>
         <include name="fonts/*"/>
         <include name="img/*"/>
