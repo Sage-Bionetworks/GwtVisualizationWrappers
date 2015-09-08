@@ -182,7 +182,6 @@ public class Biodalliance013dev {
 							COLOR2:styleColor,
 							COLOR3:styleColor,
 							HEIGHT:trackHeightPx}}],
-			collapseSuperGroups: true, 
 			resolver: resolverFunction
 	    }
 	    biodallianceBrowserConfig.sources.push(newSource);
@@ -227,7 +226,6 @@ public class Biodalliance013dev {
 							COLOR2:styleColor,
 							COLOR3:styleColor,
 							HEIGHT:trackHeightPx}}],
-			collapseSuperGroups: true, 
 			resolver: resolverFunction
 	    }
 	    biodallianceBrowserConfig.sources.push(newSource);
