@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module rename-to="Biodalliance13">
+    <public path="client/biodalliance13/resource">
+        <include name="css/*.css"/>
+        <include name="js/*.js"/>
+        <include name="help/*"/>
+        <include name="*.js"/>
+        <include name="fonts/*"/>
+        <include name="img/*"/>
+    </public>
+    
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name="com.google.gwt.user.UserAgent"/>
+    <inherits name="com.google.gwt.i18n.I18N"/>
+    <inherits name="com.google.gwt.json.JSON" />
+	
+	<entry-point class="org.gwtvisualizationwrappers.client.biodalliance13.BiodallianceEntryPoint" />
+	
+    <source path="client/biodalliance13" />
+    <source path="shared" />
+</module>
