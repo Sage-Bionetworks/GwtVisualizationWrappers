@@ -23,25 +23,7 @@ public class Biodalliance013dev {
 	}-*/;
 	
 	/**
-	 * Construct and show a cytoscape graph.
-	 * 
-	 * @param containerId Element ID to put the graph into.
-	 * @param cytoscapeGraphJson Exported JSON from Cytoscape.
-	 * http://wiki.cytoscape.org/Cytoscape_3/UserManual#Cytoscape_3.2BAC8-UserManual.2BAC8-CytoscapeJs.Data_Exchange_between_Cytoscape_and_Cytoscape.js
-
-{
-	elements:{
-		nodes:[],
-		edges:[]
-	}
-	style:[{
-			selector: 'node',
-			style: {
-			}
-	}]
-}
-	 */
-	/**
+	 * Construct and show a Biodalliance genome browser visualization.
 	 * @param urlPrefix url prefix, where to find Biodalliance resources (ie //www.biodalliance.org/release-0.14/)
 	 * @param containerId div element id to inject Biodalliance visualization
 	 * @param initChr init chr
@@ -83,9 +65,6 @@ public class Biodalliance013dev {
 	private static native void _init013Dev() /*-{
 		$wnd.Browser013Dev = $wnd.Browser;
 	}-*/;
-
-	
-	
 
 	private JavaScriptObject createNewBiodallianceBrowserConfig(
 			String prefix,
