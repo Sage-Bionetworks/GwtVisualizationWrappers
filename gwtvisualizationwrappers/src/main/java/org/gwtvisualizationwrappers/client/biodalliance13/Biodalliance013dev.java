@@ -152,7 +152,7 @@ public class Biodalliance013dev {
 	private void addBigwigSource(
 			JavaScriptObject biodallianceBrowserConfig,
 			BiodallianceSource source) {
-		addBigwigSource(biodallianceBrowserConfig, source.getSourceName(), source.getSourceURI(), source.getStyleType(), source.getStyleGlyphType(), source.getStyleColor(), source.getTrackHeightPx());
+		addBigwigSource(biodallianceBrowserConfig, source.getSourceName(), source.getSourceURI(), source.getStyleType(), source.getStyleGlyphType(), source.getStyleColor(), source.getHeightPx());
 	}
 	private native void addBigwigSource(
 			JavaScriptObject biodallianceBrowserConfig,
@@ -161,7 +161,7 @@ public class Biodalliance013dev {
 			String styleType, 
 			String styleGlyphType,
 			String styleColor,
-			int trackHeightPx
+			int heightPx
 			) /*-{
 		var resolverFunction = function(url) {
 		   return fetch(url, {  
@@ -181,7 +181,7 @@ public class Biodalliance013dev {
 							COLOR1:styleColor,
 							COLOR2:styleColor,
 							COLOR3:styleColor,
-							HEIGHT:trackHeightPx}}],
+							HEIGHT:heightPx}}],
 			resolver: resolverFunction
 	    }
 	    biodallianceBrowserConfig.sources.push(newSource);
@@ -190,7 +190,7 @@ public class Biodalliance013dev {
 	private void addTabixSource(
 			JavaScriptObject biodallianceBrowserConfig,
 			BiodallianceSource source) {
-		addTabixSource(biodallianceBrowserConfig, source.getSourceName(), source.getSourceURI(), source.getSourceIndexURI(), source.getStyleType(), source.getStyleGlyphType(), source.getStyleColor(), source.getTrackHeightPx(), source.getSourceType().name().toLowerCase());
+		addTabixSource(biodallianceBrowserConfig, source.getSourceName(), source.getSourceURI(), source.getSourceIndexURI(), source.getStyleType(), source.getStyleGlyphType(), source.getStyleColor(), source.getHeightPx(), source.getSourceType().name().toLowerCase());
 	}
 	
 	private native void addTabixSource(
@@ -201,7 +201,7 @@ public class Biodalliance013dev {
 			String styleType, 
 			String styleGlyphType,
 			String styleColor,
-			int trackHeightPx,
+			int heightPx,
 			String sourcePayload
 			) /*-{
 		var resolverFunction = function(url) {
@@ -224,7 +224,7 @@ public class Biodalliance013dev {
 				{type: 'default',
 				   style: {
 				      glyph: 'PLIMSOLL',
-				      HEIGHT:trackHeightPx,
+				      HEIGHT:heightPx,
 				      STROKECOLOR: 'black',
 				      FGCOLOR: styleColor,
 				      BUMP: true}}],

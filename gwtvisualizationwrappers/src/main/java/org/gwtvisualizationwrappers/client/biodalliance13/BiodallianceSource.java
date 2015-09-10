@@ -16,7 +16,7 @@ public class BiodallianceSource {
 	public static final Integer DEFAULT_HEIGHT = 30;
 	
 	String styleType, styleGlyphType, styleColor;
-	int trackHeightPx;
+	int heightPx;
 
 	public enum SourceType {
 		BIGWIG, VCF, BED
@@ -50,7 +50,7 @@ public class BiodallianceSource {
 		styleType = DEFAULT_STYLE_TYPE;
 		styleGlyphType = DEFAULT_STYLE_GLYPH_TYPE;
 		styleColor = DEFAULT_STYLE_COLOR;
-		trackHeightPx = DEFAULT_HEIGHT;
+		heightPx = DEFAULT_HEIGHT;
 	}
 	
 	public JSONObject toJsonObject() {
@@ -70,7 +70,7 @@ public class BiodallianceSource {
 		jsonObject.put(STYLE_GLYPH_TYPE_KEY, new JSONString(styleGlyphType));
 		jsonObject.put(STYLE_COLOR_KEY, new JSONString(styleColor));
 		jsonObject.put(SOURCE_TYPE, new JSONString(sourceType.name()));
-		jsonObject.put(STYLE_HEIGHT, new JSONString(Integer.toString(trackHeightPx)));
+		jsonObject.put(STYLE_HEIGHT, new JSONString(Integer.toString(heightPx)));
 		return jsonObject;
 	}
 	
@@ -100,7 +100,7 @@ public class BiodallianceSource {
 		setStyleType(value.get(STYLE_TYPE_KEY).isString().stringValue());
 		setStyleGlyphType(value.get(STYLE_GLYPH_TYPE_KEY).isString().stringValue());
 		setStyleColor(value.get(STYLE_COLOR_KEY).isString().stringValue());
-		setTrackHeightPx(Integer.parseInt(value.get(STYLE_HEIGHT).isString().stringValue()));
+		setHeightPx(Integer.parseInt(value.get(STYLE_HEIGHT).isString().stringValue()));
 		String sourceTypeString = value.get(SOURCE_TYPE).isString().stringValue();
 		setSourceType(SourceType.valueOf(sourceTypeString));
 	}
@@ -135,8 +135,8 @@ public class BiodallianceSource {
 	public String getStyleColor() {
 		return styleColor;
 	}
-	public int getTrackHeightPx() {
-		return trackHeightPx;
+	public int getHeightPx() {
+		return heightPx;
 	}
 	
 	public SourceType getSourceType() {
@@ -173,8 +173,8 @@ public class BiodallianceSource {
 		this.sourceName = sourceName;
 	}
 
-	public void setTrackHeightPx(int trackHeightPx) {
-		this.trackHeightPx = trackHeightPx;
+	public void setHeightPx(int heightPx) {
+		this.heightPx = heightPx;
 	}
 	
 	public void setSourceType(SourceType sourceType) {
