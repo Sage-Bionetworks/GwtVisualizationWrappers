@@ -14,6 +14,7 @@
     <inherits name="com.google.gwt.user.UserAgent"/>
     <inherits name="com.google.gwt.i18n.I18N"/>
     <inherits name="com.google.gwt.json.JSON" />
+	<inherits name="com.google.gwt.junit.JUnit" />
 	
 	<entry-point class="org.gwtvisualizationwrappers.client.biodalliance13.BiodallianceEntryPoint" />
 	

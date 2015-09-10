@@ -90,6 +90,21 @@
                             </configuration>
                         </execution>
                     </executions>
+                    <!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
+					documentation at codehaus.org -->
+					<configuration>
+						<i18nMessagesBundle>org.sagebionetworks.web.client.Messages</i18nMessagesBundle>
+						<!-- There are the GWT tests -->
+						<includes>**/*GwtTest*.java</includes>
+						<!-- Run the GWT test with the headless html unit. -->
+						<mode>htmlunit</mode>
+						<module>org.gwtvisualizationwrappers.Biodalliance13</module>
+						<!-- GWT compiler options -->
+				        <compileReport>true</compileReport>
+				        <logLevel>INFO</logLevel>
+				        <extraJvmArgs>-Xmx1536m -Xms1024m -XX:PermSize=128m -XX:MaxPermSize=256m</extraJvmArgs>
+						<!--           <fragmentCount>12</fragmentCount> -->					
+					</configuration>
                     <inherited>true</inherited>
                 </plugin>
                 <plugin>

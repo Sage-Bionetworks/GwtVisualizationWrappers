@@ -188,4 +188,101 @@ public class BiodallianceSource {
 	public void setIndexSourceURI(String indexSourceURI) {
 		this.indexSourceURI = indexSourceURI;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((entityId == null) ? 0 : entityId.hashCode());
+		result = prime * result + heightPx;
+		result = prime * result
+				+ ((indexEntityId == null) ? 0 : indexEntityId.hashCode());
+		result = prime * result
+				+ ((indexSourceURI == null) ? 0 : indexSourceURI.hashCode());
+		result = prime * result
+				+ ((indexVersion == null) ? 0 : indexVersion.hashCode());
+		result = prime * result
+				+ ((sourceName == null) ? 0 : sourceName.hashCode());
+		result = prime * result
+				+ ((sourceType == null) ? 0 : sourceType.hashCode());
+		result = prime * result
+				+ ((sourceURI == null) ? 0 : sourceURI.hashCode());
+		result = prime * result
+				+ ((styleColor == null) ? 0 : styleColor.hashCode());
+		result = prime * result
+				+ ((styleGlyphType == null) ? 0 : styleGlyphType.hashCode());
+		result = prime * result
+				+ ((styleType == null) ? 0 : styleType.hashCode());
+		result = prime * result + ((version == null) ? 0 : version.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BiodallianceSource other = (BiodallianceSource) obj;
+		if (entityId == null) {
+			if (other.entityId != null)
+				return false;
+		} else if (!entityId.equals(other.entityId))
+			return false;
+		if (heightPx != other.heightPx)
+			return false;
+		if (indexEntityId == null) {
+			if (other.indexEntityId != null)
+				return false;
+		} else if (!indexEntityId.equals(other.indexEntityId))
+			return false;
+		if (indexSourceURI == null) {
+			if (other.indexSourceURI != null)
+				return false;
+		} else if (!indexSourceURI.equals(other.indexSourceURI))
+			return false;
+		if (indexVersion == null) {
+			if (other.indexVersion != null)
+				return false;
+		} else if (!indexVersion.equals(other.indexVersion))
+			return false;
+		if (sourceName == null) {
+			if (other.sourceName != null)
+				return false;
+		} else if (!sourceName.equals(other.sourceName))
+			return false;
+		if (sourceType != other.sourceType)
+			return false;
+		if (sourceURI == null) {
+			if (other.sourceURI != null)
+				return false;
+		} else if (!sourceURI.equals(other.sourceURI))
+			return false;
+		if (styleColor == null) {
+			if (other.styleColor != null)
+				return false;
+		} else if (!styleColor.equals(other.styleColor))
+			return false;
+		if (styleGlyphType == null) {
+			if (other.styleGlyphType != null)
+				return false;
+		} else if (!styleGlyphType.equals(other.styleGlyphType))
+			return false;
+		if (styleType == null) {
+			if (other.styleType != null)
+				return false;
+		} else if (!styleType.equals(other.styleType))
+			return false;
+		if (version == null) {
+			if (other.version != null)
+				return false;
+		} else if (!version.equals(other.version))
+			return false;
+		return true;
+	}
+	
+	
 }
