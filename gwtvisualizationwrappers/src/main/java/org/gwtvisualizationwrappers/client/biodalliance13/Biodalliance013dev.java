@@ -214,18 +214,20 @@ public class Biodalliance013dev {
 		   });
 		}
 	    var newSource = {
-	    	name: sourceName,
+			name: sourceName,
 			collapseSuperGroups:true,
 			uri: sourceURI,
 			indexURI: sourceIndexURI,
 			payload: sourcePayload,
 			tier_type: 'tabix',
-			style: [{type : styleType,
-					style: {glyph: styleGlyphType,
-							COLOR1:styleColor,
-							COLOR2:styleColor,
-							COLOR3:styleColor,
-							HEIGHT:trackHeightPx}}],
+			style: [ 
+				{type: 'default',
+				   style: {
+				      glyph: 'PLIMSOLL',
+				      HEIGHT:trackHeightPx,
+				      STROKECOLOR: 'black',
+				      FGCOLOR: styleColor,
+				      BUMP: true}}],
 			resolver: resolverFunction
 	    }
 	    biodallianceBrowserConfig.sources.push(newSource);
