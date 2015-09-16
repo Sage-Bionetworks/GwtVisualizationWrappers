@@ -6,7 +6,7 @@
     <groupId>org.gwtvisualizationwrappers</groupId>
     <artifactId>gwtvisualizationwrappers-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-gwt-2.7.0</version>
+    <version>1.1-gwt-2.7.0</version>
 
     <name>gwt visualization wrappers - parent</name>
     <description>GWT wrappers for popular JS libraries</description>
@@ -45,30 +45,6 @@
     
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>1.7</version>
-                <configuration>
-                    <licenseName>apache_v2</licenseName>
-                    <inceptionYear>2015</inceptionYear>
-                    <organizationName>GwtCytoscapeJs</organizationName>
-                    <projectName>GwtCytoscapeJs</projectName>
-                    <includes>
-                        <include>**/*.java</include>
-                        <include>**/*.xml</include>
-                    </includes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>license</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>update-file-header</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -114,6 +90,9 @@
                             </configuration>
                         </execution>
                     </executions>
+                    <!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
+					documentation at codehaus.org -->
+
                     <inherited>true</inherited>
                 </plugin>
                 <plugin>
