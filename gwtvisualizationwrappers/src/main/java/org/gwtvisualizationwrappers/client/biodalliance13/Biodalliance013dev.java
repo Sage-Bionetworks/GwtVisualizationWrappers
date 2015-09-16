@@ -54,8 +54,10 @@ public class Biodalliance013dev {
 		for (BiodallianceSource source : sources) {
 			if (BiodallianceSource.SourceType.BIGWIG.equals(source.getSourceType())) {
 				addBigwigSource(config, source);	
-			} else if (BiodallianceSource.SourceType.VCF.equals(source.getSourceType()) || BiodallianceSource.SourceType.BED.equals(source.getSourceType())) {
-				addTabixSource(config, source);
+			} else if (BiodallianceSource.SourceType.VCF.equals(source.getSourceType())) {
+				addVcfSource(config, source);
+			} else if (BiodallianceSource.SourceType.BED.equals(source.getSourceType())) {
+				addBedSource(config, source);
 			}
 		}
 		
@@ -187,13 +189,13 @@ public class Biodalliance013dev {
 	    biodallianceBrowserConfig.sources.push(newSource);
 	}-*/;
 	
-	private void addTabixSource(
+	private void addVcfSource(
 			JavaScriptObject biodallianceBrowserConfig,
 			BiodallianceSource source) {
-		addTabixSource(biodallianceBrowserConfig, source.getSourceName(), source.getSourceURI(), source.getSourceIndexURI(), source.getStyleType(), source.getStyleGlyphType(), source.getStyleColor(), source.getHeightPx(), source.getSourceType().name().toLowerCase());
+		addVcfSource(biodallianceBrowserConfig, source.getSourceName(), source.getSourceURI(), source.getSourceIndexURI(), source.getStyleType(), source.getStyleGlyphType(), source.getStyleColor(), source.getHeightPx(), source.getSourceType().name().toLowerCase());
 	}
 	
-	private native void addTabixSource(
+	private native void addVcfSource(
 			JavaScriptObject biodallianceBrowserConfig,
 			String sourceName,
 			String sourceURI,
@@ -228,6 +230,54 @@ public class Biodalliance013dev {
 				      STROKECOLOR: 'black',
 				      FGCOLOR: styleColor,
 				      BUMP: true}}],
+			resolver: resolverFunction
+	    }
+	    biodallianceBrowserConfig.sources.push(newSource);
+	}-*/;
+	
+	private void addBedSource(
+			JavaScriptObject biodallianceBrowserConfig,
+			BiodallianceSource source) {
+		addBedSource(biodallianceBrowserConfig, source.getSourceName(), source.getSourceURI(), source.getSourceIndexURI(), source.getStyleType(), source.getStyleGlyphType(), source.getStyleColor(), source.getHeightPx(), source.getSourceType().name().toLowerCase());
+	}
+
+	
+	private native void addBedSource(
+			JavaScriptObject biodallianceBrowserConfig,
+			String sourceName,
+			String sourceURI,
+			String sourceIndexURI,
+			String styleType, 
+			String styleGlyphType,
+			String styleColor,
+			int heightPx,
+			String sourcePayload
+			) /*-{
+		var resolverFunction = function(url) {
+		   return fetch(url, {  
+			  credentials: 'include'  //sending credentials with a fetch request (session cookie)
+			}).then(function(resp) {
+		       return resp.json();
+		   }).then(function(rdata) {
+		       return rdata.url;
+		   });
+		}
+	    var newSource = {
+			name: sourceName,
+			collapseSuperGroups:true,
+			uri: sourceURI,
+			indexURI: sourceIndexURI,
+			payload: sourcePayload,
+			tier_type: 'tabix',
+			style: [ 
+				{type: 'default',
+				   style: {
+				      glyph: 'BOX',
+				      HEIGHT:heightPx,
+				      STROKECOLOR: 'black',
+				      BGCOLOR: styleColor,
+				      BUMP: true,
+				      LABEL: true}}],
 			resolver: resolverFunction
 	    }
 	    biodallianceBrowserConfig.sources.push(newSource);
