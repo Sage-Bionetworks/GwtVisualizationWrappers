@@ -78,7 +78,7 @@ public class Biodalliance013dev {
 			) {
 		
 		return createNewBiodallianceBrowserConfig(prefix, containerId, initChr, initViewStart, initViewEnd, config.getTwoBitURI(),
-				config.getBwgURI(), config.getStylesheetURI(), config.getTrixURI(), config.getSpeciesName(), config.getTaxon(), config.getAuthName(),
+				config.getBwgURI(), config.getStylesheetURI(), config.getTrixURI(), config.getTrixxURI(), config.getSpeciesName(), config.getTaxon(), config.getAuthName(),
 				config.getVersion(), config.getUscsName());
 	}
 	
@@ -92,6 +92,7 @@ public class Biodalliance013dev {
 			String gencodeBBFileURI,
 			String gencodeXMLFileURI, //stylesheet
 			String gencodeIndexFileURI,
+			String gencodeIndexxFileURI,
 			String coordSystemSpeciesName,
 			int coordSystemTaxon,
 			String coordSystemAuth,
@@ -143,6 +144,7 @@ public class Biodalliance013dev {
 					stylesheet_uri: gencodeXMLFileURI,
 					collapseSuperGroups: true, 
 					trixURI: gencodeIndexFileURI,
+					trixxURI: gencodeIndexxFileURI,
 					subtierMax:5,
 					pinned:true,
 					resolver: resolverFunction
