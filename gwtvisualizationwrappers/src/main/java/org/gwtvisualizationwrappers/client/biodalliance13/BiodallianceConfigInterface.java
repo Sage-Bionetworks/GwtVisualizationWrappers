@@ -9,5 +9,6 @@ public interface BiodallianceConfigInterface {
 	String getTwoBitURI();
 	String getBwgURI();
 	String getTrixURI();
+	String getTrixxURI();
 	String getStylesheetURI();
 }
