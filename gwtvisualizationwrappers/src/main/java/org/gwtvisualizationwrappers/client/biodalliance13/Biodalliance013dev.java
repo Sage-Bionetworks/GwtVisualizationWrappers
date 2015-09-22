@@ -45,6 +45,10 @@ public class Biodalliance013dev {
 		    ScriptInjector.fromString(BiodallianceClientBundle.INSTANCE.biodalliance0_13dev().getText())
 		        .setWindow(ScriptInjector.TOP_WINDOW)
 		        .inject();
+		    ScriptInjector.fromString(BiodallianceClientBundle.INSTANCE.polyfillFetch().getText())
+		        .setWindow(ScriptInjector.TOP_WINDOW)
+		        .inject();
+		    
 		    _init013Dev();
 		}
 
@@ -66,6 +70,21 @@ public class Biodalliance013dev {
 
 	private static native void _init013Dev() /*-{
 		$wnd.Browser013Dev = $wnd.Browser;
+		if ($wnd.fetch) {
+			//may have been polyfilled into $wnd by fetch.js (for browsers that do not support fetch)
+			self.fetch = $wnd.fetch;
+		}
+		
+		$wnd.resolverFunction = function(url) {
+		   return fetch(url, {  
+			  credentials: 'include'  //sending credentials with a fetch request (session cookie)
+			}).then(function(resp) {
+		       return resp.json();
+		   }).then(function(rdata) {
+		       return rdata.url;
+		   });
+		}
+		
 	}-*/;
 
 	private JavaScriptObject createNewBiodallianceBrowserConfig(
@@ -99,15 +118,6 @@ public class Biodalliance013dev {
 			String coordSystemVersion,
 			String coordSystemUcscName
 			) /*-{
-		var resolverFunction = function(url) {
-		   return fetch(url, {  
-			  credentials: 'include'  //sending credentials with a fetch request (session cookie)
-			}).then(function(resp) {
-		       return resp.json();
-		   }).then(function(rdata) {
-		       return rdata.url;
-		   });
-		}
 				
 		var biodallianceBrowserConfig = {
 				uiPrefix: urlPrefix,
@@ -137,7 +147,7 @@ public class Biodalliance013dev {
 					tier_type: 'sequence',
 					provides_entrypoints: true,
 					pinned: true,
-					resolver: resolverFunction}, 
+					resolver: $wnd.resolverFunction}, 
 
 					{name: 'GENCODE',
 					bwgURI: gencodeBBFileURI,
@@ -147,7 +157,7 @@ public class Biodalliance013dev {
 					trixxURI: gencodeIndexxFileURI,
 					subtierMax:5,
 					pinned:true,
-					resolver: resolverFunction
+					resolver: $wnd.resolverFunction
 					}]
 		};
 		return biodallianceBrowserConfig;
@@ -167,16 +177,7 @@ public class Biodalliance013dev {
 			String styleColor,
 			int heightPx
 			) /*-{
-		var resolverFunction = function(url) {
-		   return fetch(url, {  
-			  credentials: 'include'  //sending credentials with a fetch request (session cookie)
-			}).then(function(resp) {
-		       return resp.json();
-		   }).then(function(rdata) {
-		       return rdata.url;
-		   });
-		}
-	    var newSource = {
+		var newSource = {
 	    	name: sourceName,
 			collapseSuperGroups:true,
 			bwgURI: sourceBwgURI,
@@ -186,7 +187,7 @@ public class Biodalliance013dev {
 							COLOR2:styleColor,
 							COLOR3:styleColor,
 							HEIGHT:heightPx}}],
-			resolver: resolverFunction
+			resolver: $wnd.resolverFunction
 	    }
 	    biodallianceBrowserConfig.sources.push(newSource);
 	}-*/;
@@ -208,15 +209,7 @@ public class Biodalliance013dev {
 			int heightPx,
 			String sourcePayload
 			) /*-{
-		var resolverFunction = function(url) {
-		   return fetch(url, {  
-			  credentials: 'include'  //sending credentials with a fetch request (session cookie)
-			}).then(function(resp) {
-		       return resp.json();
-		   }).then(function(rdata) {
-		       return rdata.url;
-		   });
-		}
+		
 	    var newSource = {
 			name: sourceName,
 			collapseSuperGroups:true,
@@ -232,7 +225,7 @@ public class Biodalliance013dev {
 				      STROKECOLOR: 'black',
 				      FGCOLOR: styleColor,
 				      BUMP: true}}],
-			resolver: resolverFunction
+			resolver: $wnd.resolverFunction
 	    }
 	    biodallianceBrowserConfig.sources.push(newSource);
 	}-*/;
@@ -255,16 +248,7 @@ public class Biodalliance013dev {
 			int heightPx,
 			String sourcePayload
 			) /*-{
-		var resolverFunction = function(url) {
-		   return fetch(url, {  
-			  credentials: 'include'  //sending credentials with a fetch request (session cookie)
-			}).then(function(resp) {
-		       return resp.json();
-		   }).then(function(rdata) {
-		       return rdata.url;
-		   });
-		}
-	    var newSource = {
+		var newSource = {
 			name: sourceName,
 			collapseSuperGroups:true,
 			uri: sourceURI,
@@ -280,7 +264,7 @@ public class Biodalliance013dev {
 				      BGCOLOR: styleColor,
 				      BUMP: true,
 				      LABEL: true}}],
-			resolver: resolverFunction
+			resolver: $wnd.resolverFunction
 	    }
 	    biodallianceBrowserConfig.sources.push(newSource);
 	}-*/;

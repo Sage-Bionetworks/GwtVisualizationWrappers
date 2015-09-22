@@ -13,4 +13,7 @@ public interface BiodallianceClientBundle extends ClientBundle {
     
     @Source("resource/js/0.13.dev-dalliance-compiled.js")
     TextResource biodalliance0_13dev();
+    
+    @Source("resource/js/fetch.js")
+    TextResource polyfillFetch();
 }
