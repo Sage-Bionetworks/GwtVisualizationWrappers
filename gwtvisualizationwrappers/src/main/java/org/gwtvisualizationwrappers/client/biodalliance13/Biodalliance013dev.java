@@ -128,6 +128,7 @@ public class Biodalliance013dev {
 				viewEnd:  initViewEnd, 
 				cookieKey: coordSystemSpeciesName, 
 				fullScreen: false,
+				maxHeight: 15000,
 				coordSystem: { 
 					speciesName: coordSystemSpeciesName, 
 					taxon: coordSystemTaxon, 
