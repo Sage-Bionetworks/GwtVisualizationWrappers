@@ -75,15 +75,24 @@ public class Biodalliance013dev {
 			self.fetch = $wnd.fetch;
 		}
 		
+		//SWC-2664: There's a long-standing bug in Safari which causes problems when you try to fetch different Ranges of the same URL. Salt the url for Safari only 
+		//(since Safari's cache does not seem to respect Range and Content-Range).
+		var isSafari = navigator.userAgent.indexOf('Safari') >= 0 && navigator.userAgent.indexOf('Chrome') < 0 ;
+		
 		$wnd.resolverFunction = function(url) {
-		   return fetch(url, {  
-			  credentials: 'include'  //sending credentials with a fetch request (session cookie)
-			}).then(function(resp) {
-		       return resp.json();
-		   }).then(function(rdata) {
-		       return rdata.url;
-		   });
-		}
+			return fetch(url, {  
+					credentials: 'include'  //sending credentials with a fetch request (session cookie)
+				}).then(function(resp) {
+					return resp.json();
+				}).then(function(rdata) {
+					if (isSafari) {
+						return rdata.url+'&t='+Date.now();
+					} else {
+						return rdata.url;
+					}
+					
+				});
+}
 		
 	}-*/;
 
