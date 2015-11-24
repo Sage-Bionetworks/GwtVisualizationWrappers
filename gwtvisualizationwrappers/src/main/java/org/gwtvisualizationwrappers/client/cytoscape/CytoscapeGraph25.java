@@ -1,13 +1,8 @@
 package org.gwtvisualizationwrappers.client.cytoscape;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsonUtils;
-import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.ScriptInjector;
-import com.google.gwt.dom.client.Element;
 
-public class CytoscapeGraph242 {
+public class CytoscapeGraph25 {
     
 	/**
      * Check to see if Cytoscape JS version has been loaded already.
