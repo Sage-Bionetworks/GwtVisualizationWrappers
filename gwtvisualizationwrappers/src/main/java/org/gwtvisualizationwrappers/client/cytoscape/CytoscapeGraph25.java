@@ -9,12 +9,12 @@ public class CytoscapeGraph25 {
      * 
      * @return true if Cytoscape is loaded, false otherwise.
      */
-    private native boolean isCytoscape242Loaded() /*-{
-        return typeof $wnd['jQuery'].fn.cytoscape242 !== 'undefined'
+    private native boolean isCytoscape25Loaded() /*-{
+        return typeof $wnd['jQuery'].fn.cytoscape25 !== 'undefined'
     }-*/;
     
-	private static native void _init242() /*-{
-		$wnd.cytoscape242 = $wnd.cytoscape;
+	private static native void _init25() /*-{
+		$wnd.cytoscape25 = $wnd.cytoscape;
 		$wnd.cytoscape = undefined;
 	}-*/;
 	
@@ -26,7 +26,7 @@ public class CytoscapeGraph25 {
 	
 		var options = $wnd.createPlainObject(cyjs, styleJson, containerElement, readyFunction);
 		
-		$wnd.cytoscape = $wnd.cytoscape242;
+		$wnd.cytoscape = $wnd.cytoscape25;
 		$wnd.cytoscape(options); 
 		$wnd.cytoscape = undefined;
 	}-*/;
@@ -52,11 +52,11 @@ public class CytoscapeGraph25 {
 	 */
 	public void show(String containerId, String cyjs, String styleJson) {
 		//lazy load the cytoscape.js source
-		if (!isCytoscape242Loaded()) {
-		    ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.cytoscape2_4_2().getText())
+		if (!isCytoscape25Loaded()) {
+		    ScriptInjector.fromString(CytoscapeJsClientBundle.INSTANCE.cytoscape2_5().getText())
 		        .setWindow(ScriptInjector.TOP_WINDOW)
 		        .inject();
-		    _init242();
+		    _init25();
 		}
 
 		_initGraph(containerId, cyjs, styleJson);
