@@ -6,7 +6,7 @@
     <groupId>org.gwtvisualizationwrappers</groupId>
     <artifactId>gwtvisualizationwrappers-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.8-gwt-2.7.0</version>
+    <version>1.6-gwt-2.7.0</version>
 
     <name>gwt visualization wrappers - parent</name>
     <description>GWT wrappers for popular JS libraries</description>
