@@ -17,6 +17,6 @@ jobs:
     if: github.event_name == 'pull_request'
     uses: ./.github/workflows/build.yaml
     with:
-      mvn_goal: test
+      mvn_goal: package
     secrets: inherit
 
