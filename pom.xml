@@ -6,7 +6,7 @@
     <groupId>org.gwtvisualizationwrappers</groupId>
     <artifactId>gwtvisualizationwrappers-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.6-gwt-2.7.1</version>
+    <version>1.6-gwt-2.7.0</version>
 
     <name>gwt visualization wrappers - parent</name>
     <description>GWT wrappers for popular JS libraries</description>
@@ -44,6 +44,7 @@
     </properties>
     
     <build>
+    <!--
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -68,7 +69,7 @@
                 </executions>
             </plugin>
         </plugins>
-
+    -->
         <pluginManagement>
             <plugins>
                 <plugin>
